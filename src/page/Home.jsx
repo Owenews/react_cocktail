@@ -6,22 +6,27 @@ const Home = () => {
 
   useEffect(() => {
     (async () => {
-      const drinksResponse = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a");
+      // Récupérer des cocktails commencant par "a"
+      const drinksResponse = await fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a"); 
+      // Récupérer les données au format JSON
       const drinksData = await drinksResponse.json();
 
-      setDrinks(drinksData.drinks);
+      // Limiter le nombre de résultats à 10  cocktails
+      setDrinks(drinksData.drinks.slice(0, 10));
     })();
   }, []);
 
   return (
     <>
       <div>
+        {/* Afficher les résultats si ils existent */}
         {drinks ? (
+          // <> sert à créer un élément de type enfant
           <>
+            {/* Afficher les résultats dans un tableau */}
             {drinks.map((drink) => {
               return (
-                // eslint-disable-next-line react/jsx-key
-                <article className="drink-card">
+                <article className="drink-card" key={drink.strDrink}>
                   <h2><em>{drink.strDrink}</em></h2>
                   <img className="drink-image" src={drink.strDrinkThumb} alt={drink.strDrink} />
                   <table className="drink-info">
@@ -47,6 +52,7 @@ const Home = () => {
             })}
           </>
           ) : (
+            // Afficher un message en cas d'absence de résultats ou de chargement en cours
             <p>Recettes en cours de récupération</p>
         )}
       </div>
