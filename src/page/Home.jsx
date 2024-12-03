@@ -18,6 +18,12 @@ const Home = () => {
 
   return (
     <>
+    <main>
+        <h1>Welcome to the Paradise Drink !</h1>
+        <h2>The best cocktail in the world</h2>
+        
+    </main>
+
       <div>
         {/* Afficher les résultats si ils existent */}
         {drinks ? (
