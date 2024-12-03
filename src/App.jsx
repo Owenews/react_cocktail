@@ -1,3 +1,4 @@
+
 import Header from './components/Header'
 import Home from './page/Home'
 import Footer from './components/Footer'
@@ -12,9 +13,7 @@ function App() {
     <>
       <Header />
       
-      <main>
-        <h1>Welcome to the Paradise Drink !</h1>
-      </main>
+
 
       <BrowserRouter>
       <Routes>
